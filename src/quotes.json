@@ -1,0 +1,12 @@
+{
+	quotes: [
+		{
+			quote: 'a',
+			author: 'b'
+		},
+		{
+			quote: 'c',
+			author: 'd'
+		},
+	]	
+}
