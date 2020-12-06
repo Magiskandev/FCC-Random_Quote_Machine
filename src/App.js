@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 class App extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       apiResult:"",
@@ -13,8 +13,9 @@ class App extends React.Component{
     }
     this.handlenewQuote = this.handlenewQuote.bind(this);
 }
-  componentDidMount(){
-const API = "quotes.json";
+  componentDidMount() {
+const API = "https://raw.githubusercontent.com/Magiskandev/testa/master/quotes.json";
+console.log(API)
 fetch(API).then(response => response.json()).then(data =>{
       this.setState({
         apiResult: data.quotes,
@@ -23,8 +24,9 @@ fetch(API).then(response => response.json()).then(data =>{
         quoteArrayLength: data.quotes.length
       })
     })
+  }
     
-    handlenewQuote(){
+    handlenewQuote() {
     const color = ['#16a085','#27ae60','red','#f39c12','#e74c3c','#9b59b6','#FB6964',
                     'brown','green','yellow','blue','#73A857'];
     let randomNumber = Math.floor(Math.random()*(this.state.quoteArrayLength));
@@ -36,14 +38,14 @@ fetch(API).then(response => response.json()).then(data =>{
     })
   }
 
-  render(){
+  render() {
     let twitterUrl = `https://twitter.com/intent/tweet?text=${this.state.quoteText}- ${this.state.quoteAuthor}`;
     return (<div id="quote-box">
                 <div id="app-title">
                   <h1>Random Quote Machine</h1>
                 </div>
                 <div id="quote-text">
-                    <i class="fa fa-quote-left quote-tag" style={{color:this.state.color}}></i>
+                    <i className="fa fa-quote-left quote-tag" style={{color:this.state.color}}></i>
                     <h2 id="text" style={{color:this.state.color}}>{this.state.quoteText}</h2>
                 </div>
                 <div id="quote-author">
